@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import dummyAccounts from '../data/accounts';
 // import AccountAccordion from './AccountAccordian';
 // import dummyAccounts from '../data/accounts';
 
@@ -108,14 +109,10 @@ const Divider = styled.hr`
 
 const AccountSwitch = () => {
   const [activeEmail, setActiveEmail] = useState('ayushMishra@gmail.com');
+  const [activeName, setActiveName] = useState('Ayush Mishra');
   const [showDropdown, setShowDropdown] = useState(false);
 
-  const accounts = [
-    'studyAccount@gmail.com',
-    'gamesAccount@gmail.com',
-    'babyShark@gmail.com',
-    'Astha@gmail.com'
-  ];
+
 
   const toggleDropdown = () => setShowDropdown(!showDropdown);
 
@@ -129,7 +126,7 @@ const AccountSwitch = () => {
             <ActiveAccount>
               <AccountCircle />
               <div>
-                <AccountName>Ayush Mishra</AccountName>
+                <AccountName>{activeName}</AccountName>
                 <AccountEmail>{activeEmail}</AccountEmail>
               </div>
             </ActiveAccount>
@@ -143,14 +140,16 @@ const AccountSwitch = () => {
 
           {/* Scrollable Accounts */}
           <ScrollableAccounts>
-            {accounts.map((email) => (
+            {dummyAccounts.map((account) => (
               <AccountItem
-                key={email}
-                active={email === activeEmail}
-                onClick={() => setActiveEmail(email)}
+                key={account.id}
+                active={account.email === activeEmail}
+                onClick={() => {setActiveEmail(account.email)
+setActiveName(account.name)
+                }}
               >
                 <AccountCircle />
-                <div>{email}</div>
+                <div>{account.email}</div>
               </AccountItem>
             ))}
           </ScrollableAccounts>

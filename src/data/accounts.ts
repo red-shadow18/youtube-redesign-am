@@ -14,7 +14,7 @@ const dummyAccounts = [
     {
       id: 2,
       name: 'Entertainment Account',
-      email: 'ayushEntertainment@outlook.com',
+      email: 'ayushEntertt@outlook.com',
       avatarUrl: 'https://i.pravatar.cc/100?img=2',
     },
     {
