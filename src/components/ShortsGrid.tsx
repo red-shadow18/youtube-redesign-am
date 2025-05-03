@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 import { useLiveVideos } from '../utils/useLiveVideos';
 import { Skeleton } from '@mui/material';
-import LiveVideoCard from './VideoCard';
+import LiveVideoCard from './ShortCard';
 
 const channelId = 'UCySG0qhGxcHWS66Vaq6-mvQ';
 const apiKey = 'AIzaSyCd3kj8GW7LtehTq6ji8FcteORTT7CH-_Q';
@@ -15,26 +15,9 @@ const VideoGridContainer = styled.div`
 
 `;
 
-const Filters = styled.div`
-  display: flex;
-  gap: 8px;
-  padding: 8px 0;
-  overflow-x: auto;
-`;
 
-const FilterChip = styled.button<{ selected?: boolean }>`
-  background-color: ${({ selected }) => (selected ? '#000' : '#f0f0f0')};
-  color: ${({ selected }) => (selected ? '#fff' : '#000')};
-  border: none;
-  border-radius: 6px;
-  padding:  12px;
-  cursor: pointer;
-  white-space: nowrap;
 
-  &:hover {
-    background-color: ${({ selected }) => (selected ? '#000' : '#e0e0e0')};
-  }
-`;
+
 
 const Videos = styled.div`
   display: grid;
@@ -46,16 +29,11 @@ const Videos = styled.div`
 
 
 
-const VideoGrid = () => {
-  const filters = ["All", "Music", "Gaming", "Live", "News", "Sports", "Education"];
-  const { liveVideos, loading } = useLiveVideos(channelId, apiKey,"any");
+const ShortsGrid = () => {
+  const { liveVideos, loading } = useLiveVideos(channelId, apiKey,"short");
   return (
     <VideoGridContainer>
-      <Filters>
-        {filters.map((filter, index) => (
-          <FilterChip key={filter} selected={index === 0}>{filter}</FilterChip>
-        ))}
-      </Filters>
+
 
       <Videos>
         {
@@ -75,4 +53,4 @@ liveVideos.map((video)=>    <LiveVideoCard
   );
 };
 
-export default VideoGrid;
+export default ShortsGrid;

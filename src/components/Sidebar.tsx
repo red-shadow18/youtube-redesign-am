@@ -5,6 +5,7 @@ import {
   MdOutlinePerson,
 } from 'react-icons/md';
 import { PiYoutubeLogoLight } from 'react-icons/pi';
+import { useNavigate } from 'react-router-dom';
 
 const SidebarContainer = styled.aside`
   width: 72px;
@@ -45,12 +46,13 @@ const SidebarItem = styled.div`
 `;
 
 const Sidebar = () => {
+  const navigate=useNavigate()
   return (
     <SidebarContainer>
-      <SidebarItem><MdHomeFilled />Home</SidebarItem>
-      <SidebarItem><PiYoutubeLogoLight />Shorts</SidebarItem>
-      <SidebarItem><MdOutlineSubscriptions />Subscriptions</SidebarItem>
-      <SidebarItem><MdOutlinePerson />You</SidebarItem>
+      <SidebarItem onClick={()=>navigate("/")}><MdHomeFilled />Home</SidebarItem>
+      <SidebarItem onClick={()=>navigate("/shorts")}><PiYoutubeLogoLight />Shorts</SidebarItem>
+      <SidebarItem onClick={()=>navigate("/subscriptions")}><MdOutlineSubscriptions />Subscriptions</SidebarItem>
+      <SidebarItem onClick={()=>navigate("/feed/you")}><MdOutlinePerson />You</SidebarItem>
     </SidebarContainer>
   );
 };
